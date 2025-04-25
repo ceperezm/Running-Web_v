@@ -44,6 +44,14 @@ if (isset($_GET['action'])) {
 
             $controlador->cerrarSesion();
             break;
+//------------------------------------------------------------------
+        case 'cambiarContrasena':
+
+                // Mostrar el formulario de registro
+                
+                $controlador->cambiarContrasena($_POST['correo_electronico'],$_POST['new_password'],$_POST['confirm_password'],$_POST['current_password']);
+    
+                break;
 
 
         default:

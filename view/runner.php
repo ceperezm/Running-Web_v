@@ -10,6 +10,8 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['apellido']) && isset($_SESSIO
 }
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +22,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['apellido']) && isset($_SESSIO
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="assets/img/icon.ico" type="image/x-icon">
+    <script src="js/modal.js"> </script>
 </head>
 <body>
     <header>
@@ -157,6 +160,40 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['apellido']) && isset($_SESSIO
         </table>
         <br>
     </section>
+    <section>
+        <button class="details-btn" id="boton">Actualizar contraseña</button>
+        <button class="details-btn" i="boton">Eliminar cuenta</button>
+          <!-- Ventana modal, por defecto no visiblel -->
+          <div id="ventanaModal" class="modal" style="display: none;">
+            <div class="contenido-modal">
+              <span class="cerrar">&times;</span>
+              <div class="form-container">
+                <h2>Actualizar contrasena</h2>
+                <form method="post" action="../index.php?action=cambiarContrasena">
+                <div class="input-box">
+                <label for="email">Email</label>
+                <input type="hidden" name="correo_electronico"
+                value="<?php echo htmlspecialchars($_SESSION['correo_electronico']); ?>">
+            </div>
+                    <div class="input-box">
+                        <input name= "current_password" required type="password" id="password1" placeholder="Contraseña actual">
+                    </div>
+                    <div class="input-group">
+                        <div class="input-box">
+                            <input name= "new_password" required type="password" id="password2" placeholder="Contraseña nueva">
+                        </div>
+
+                        <div class="input-box">
+                            <input name= "confirm_password" required type="password" id="password3" placeholder="Confirmar contraseña">
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn">Cambiar contraseña</button>    
+                </form>
+            </div>
+            </div>
+          </div>
+        </section>
 
     <footer>
         <link rel="stylesheet" type="text/css" href="css/footer.css">

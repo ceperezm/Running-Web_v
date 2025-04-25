@@ -36,6 +36,17 @@ class Corredor {
         return password_verify($contrasena, $contrasena_hashed);
     }
 
+    public function cambiarContrasena($correo_electronico, $new_password) {
+        $stmt = $this->conexion->prepare("UPDATE corredores SET contrasena = ? WHERE correo_electronico = ?");
+        $new_password_hashed = password_hash($new_password, PASSWORD_DEFAULT);
+        $stmt->bind_param("ss", $new_password_hashed, $correo_electronico);
+        if ($stmt->execute()) {
+            return true; // La actualización fue exitosa
+        } else {
+            return false; // Hubo un error al ejecutar la consulta
+        }
+    }
+
     public function getCorredor($correo_electronico) {
         $stmt = $this->conexion->prepare('SELECT * FROM corredores WHERE correo_electronico = ?');
         $stmt->bind_param("s", $correo_electronico);
@@ -46,6 +57,7 @@ class Corredor {
         $this->conexion = null;
         return $tabla_datos;
     }
+    
 
     public function getNombreUsuario() {
         return $this->nombre_usuario;

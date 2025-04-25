@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="assets/img/icon.ico" type="image/x-icon">
+    <script src="js/modal.js"> </script>
 </head>
 <body>
     <header>
@@ -147,6 +148,31 @@
         </table>
         <br>
     </section>
+
+    <section>
+        <button class="details-btn" id="boton">Actualizar contraseña</button>
+        <button class="details-btn" i="boton">Eliminar cuenta</button>
+          <!-- Ventana modal, por defecto no visiblel -->
+          <div id="ventanaModal" class="modal" style="display: none;">
+            <div class="contenido-modal">
+              <span class="cerrar">&times;</span>
+              <div class="form-container">
+                <h2>Actualizar contrasena</h2>
+                <form method="post" action="runner.php?action=cambiarContrasena">
+                    <div class="input-box">
+                        <input name= "contrasena" required type="password" id="password" placeholder="Contraseña actual">
+                    </div>
+                    <div class="input-group">
+                        <div class="input-box">
+                            <input name= "contrasena" required type="password" id="password" placeholder="Contraseña nueva">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Cambiar contraseña</button>    
+                </form>
+            </div>
+            </div>
+          </div>
+        </section>
 
     <footer>
         <link rel="stylesheet" type="text/css" href="css/footer.css">

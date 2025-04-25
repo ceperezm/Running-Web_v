@@ -5,8 +5,8 @@ class Conexion {
 
     public function __construct() {
 
-        $config = require 'config/config.php';
-        
+        $config = include __DIR__ . '/../config/config.php';
+
         if (!is_array($config)) {
             die("Error: Config file is missing or does not return an array.");
         }
